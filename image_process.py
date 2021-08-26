@@ -381,8 +381,6 @@ elif( runcase == 5 ):#縮小一括リサイズ 拡大一括リサイズ
 
      resize_method=sys.argv[6] #up or down
 
-     #model_mode = 'TecoGAN'
-     #model_mode = 'TecoGAN-dataset-0.5'
      image_folder = '5-1'
      
      for image_i in range(image_s,image_e+1):
@@ -399,13 +397,6 @@ elif( runcase == 5 ):#縮小一括リサイズ 拡大一括リサイズ
          if not os.path.exists(res_f):
              os.makedirs(res_f)#再帰的にディレクトリ作成，深い層まで一気に作成可能
 
-         #if not os.path.exists(GTx_f):
-             #os.makedirs(GTx_f)#再帰的にディレクトリ作成，深い層まで一気に作成可能
-
-
-         #print('GT_im : '+ str(GT_im) )
-         #print('LRx0125_f : '+ str(LRx0125_f) )
-         #print('GTx05_f : '+ str(GTx05_f) )
          print('target_f : '+ str(target_f) )
          print('target_im : '+ str(target_im) )
          print('results_f : '+ str(res_f) )
@@ -424,12 +415,8 @@ elif( runcase == 5 ):#縮小一括リサイズ 拡大一括リサイズ
              print(str(resize_interpolation))
              res = cv.resize(target, None, fx=4.0, fy=4.0, interpolation=resize_interpolation)
             
-
-         #LR = LR[:,:,::-1] #RGB→BGR
-         #GTx05 = GTx05[:,:,::-1] #RGB→BGR
          res = res[:,:,::-1] #RGB→BGR
 
-         #cv.imwrite(LRx0125_f+image_name+str('%04d' % image_i)+image_format, LR)
          cv.imwrite(res_f+image_name+str('%04d' % image_i)+image_format, res)
 
 
